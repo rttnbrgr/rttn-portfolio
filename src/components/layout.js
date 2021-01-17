@@ -1,3 +1,6 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+
 /**
  * Layout component that queries for data
  * with Gatsby's useStaticQuery component
@@ -6,10 +9,14 @@
  */
 
 import React from "react"
+import { Global } from "@emotion/core"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import { ThemeProvider } from "theme-ui"
+import theme from "../gatsby-plugin-theme-ui"
 import Header from "./header"
+import Container from "./Container"
+import Footer from "./Footer"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -24,8 +31,17 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+    <ThemeProvider theme={theme}>
+      <Global
+        styles={theme => ({
+          a: { color: "inherit" },
+        })}
+      />
+      <Header siteTitle={data.site.siteMetadata?.title || `Missing Title`} />
+      <Container>
+        <main>{children}</main>
+        <Footer />
+      </Container>
       <div
         style={{
           margin: `0 auto`,
@@ -34,17 +50,9 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        <Footer />
       </div>
-    </>
+    </ThemeProvider>
   )
 }
 
