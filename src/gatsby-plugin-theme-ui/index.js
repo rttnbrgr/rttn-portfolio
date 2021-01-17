@@ -11,7 +11,6 @@ export default {
     primary: "blue",
     secondary: "green",
   },
-  // font
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fonts: {
     body: defaultFontStack,
@@ -38,12 +37,12 @@ export default {
     },
     h1: {
       variant: "text.heading",
-      fontSize: 5,
+      fontSize: 48,
       color: "secondary",
     },
     h2: {
       variant: "text.heading",
-      fontSize: 5,
+      fontSize: 24,
       color: "hotpink",
     },
   },

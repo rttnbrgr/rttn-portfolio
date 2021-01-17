@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Flex } from "theme-ui"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
@@ -16,17 +16,6 @@ const Container = ({ children, sx }) => (
   </div>
 )
 
-const FlexRow = ({ children }) => (
-  <div
-    sx={{
-      display: "flex",
-      justifyContent: "space-between",
-    }}
-  >
-    {children}
-  </div>
-)
-
 const Header = ({ siteTitle }) => (
   <header
     sx={{
@@ -35,8 +24,8 @@ const Header = ({ siteTitle }) => (
     }}
   >
     <Container>
-      <FlexRow>
-        <h1 style={{ margin: 0 }}>
+      <Flex justifyContent="space-between">
+        <Styled.h1 style={{ margin: 0 }}>
           <Link
             to="/"
             style={{
@@ -45,12 +34,10 @@ const Header = ({ siteTitle }) => (
           >
             {siteTitle}
           </Link>
-        </h1>
+        </Styled.h1>
 
-        <h1 sx={{ fontSize: 5 }}>Socials</h1>
-        <Styled.h1>Socials</Styled.h1>
-        <Styled.h2>Socials</Styled.h2>
-      </FlexRow>
+        <Styled.h1 sx={{ color: "pink" }}>Socials</Styled.h1>
+      </Flex>
     </Container>
   </header>
 )
