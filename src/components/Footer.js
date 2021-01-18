@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, Flex, Styled } from "theme-ui"
-import React from "react"
 
 const Footer = () => {
   return (
