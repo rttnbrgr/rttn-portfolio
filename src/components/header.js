@@ -1,31 +1,20 @@
 /** @jsx jsx */
-import { jsx, Styled, Flex } from "theme-ui"
+import { jsx, Styled, Flex, Container } from "theme-ui"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
-
-const Container = ({ children, sx }) => (
-  <div
-    sx={{
-      margin: `0 auto`,
-      maxWidth: 960,
-      padding: `1.45rem 1.0875rem`,
-    }}
-  >
-    {children}
-  </div>
-)
 
 const Header = ({ siteTitle }) => (
   <header
     sx={{
       bg: "background",
       color: "text",
+      py: 24,
     }}
   >
     <Container>
-      <Flex justifyContent="space-between">
-        <Styled.h1 style={{ margin: 0 }}>
+      <Flex sx={{ justifyContent: "space-between" }}>
+        {/* Left */}
+        <Styled.h1>
           <Link
             to="/"
             style={{
@@ -36,7 +25,8 @@ const Header = ({ siteTitle }) => (
           </Link>
         </Styled.h1>
 
-        <Styled.h1 sx={{ color: "pink" }}>Socials</Styled.h1>
+        {/* Right */}
+        <Styled.h1>Socials</Styled.h1>
       </Flex>
     </Container>
   </header>
