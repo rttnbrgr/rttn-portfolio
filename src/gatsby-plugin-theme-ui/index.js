@@ -34,31 +34,42 @@ export default {
     vh: "100vh",
     vw: "100vw",
   },
+  text: {
+    heading: {
+      color: "text",
+      fontFamily: "heading",
+      m: 0,
+    },
+    body: {
+      color: "text",
+      fontFamily: "body",
+      m: 0,
+    },
+  },
   layout: {
     container: {
       width: "vw",
-      minHeight: 100,
       px: 24,
-      bg: ["primary", "secondary", "debug"],
+      // bg: ["primary", "secondary", "debug"],
     },
   },
   styles: {
     root: {
       fontFamily: "body",
       fontWeight: "body",
-      bg: ["red", "orange", "yellow"],
     },
     h1: {
       variant: "text.heading",
       // fontSize: 6,
       fontSize: [32, 48],
-      color: "text",
-      m: 0,
     },
     h2: {
       variant: "text.heading",
       fontSize: 24,
-      color: "hotpink",
+    },
+    p: {
+      variant: "text.body",
+      fontSize: 16,
       m: 0,
     },
   },
