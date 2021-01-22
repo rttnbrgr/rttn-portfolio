@@ -26,7 +26,7 @@ const Header = ({ siteTitle }) => (
         </Styled.h1>
 
         {/* Right */}
-        <Styled.h1>Socials</Styled.h1>
+        <Styled.h1>Menu</Styled.h1>
       </Flex>
     </Container>
   </header>
