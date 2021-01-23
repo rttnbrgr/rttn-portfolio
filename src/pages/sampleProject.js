@@ -1,7 +1,5 @@
 /** @jsx jsx */
 import { jsx, Styled, Flex } from "theme-ui"
-import React from "react"
-import { Grid } from "theme-ui"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
