@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import portfoliData from "../data/portfolio"
 import Item from "../components/Item"
+import { Link } from "gatsby"
 
 const IndexPage = ({ data }) => {
   console.log(data)
@@ -11,19 +12,31 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Home" />
       <Grid gap={32} columns={["1fr", "repeat(2, 1fr)", "repeat(3, 1fr)"]}>
-        {portfoliData.map(x => (
-          <Item title={x.name} key={x.id} />
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <Item
+            title={node.frontmatter.title}
+            key={node.id}
+            to={node.fields.slug}
+          />
         ))}
       </Grid>
       <Box py="4" my="4" sx={{ bg: "#eee" }}>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
-            <h3 style={{ marginBottom: "8px" }}>
-              {node.frontmatter.title}{" "}
-              <span style={{ color: "#bbb" }}>— {node.frontmatter.date}</span>
-            </h3>
-            <p>{node.excerpt}</p>
+            <Link
+              to={node.fields.slug}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              <h3 style={{ marginBottom: "8px" }}>
+                {node.frontmatter.title}{" "}
+                <span style={{ color: "#bbb" }}>— {node.frontmatter.date}</span>
+              </h3>
+              <p>{node.excerpt}</p>
+            </Link>
           </div>
         ))}
       </Box>
@@ -45,6 +58,9 @@ export const query = graphql`
             path
             title
             year
+          }
+          fields {
+            slug
           }
         }
       }
