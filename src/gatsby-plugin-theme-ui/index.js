@@ -34,22 +34,40 @@ export default {
     vh: "100vh",
     vw: "100vw",
   },
+  space: {
+    test: "100px",
+    screenFrameX: 24,
+    screenFrameY: 24,
+  },
   text: {
     heading: {
       color: "text",
       fontFamily: "heading",
+      fontWeight: "heading",
       m: 0,
     },
     body: {
       color: "text",
       fontFamily: "body",
       m: 0,
+      bg: "debug",
+    },
+    // start as h1 | linehgith + underline
+    bigLinks: {
+      variant: "text.heading",
+      lineHeight: 1.5,
+      fontSize: [32, 48],
+      color: "red",
+      "&:hover": {
+        textDecoration: "1px solid green",
+        color: "pink",
+      },
     },
   },
   layout: {
     container: {
       width: "vw",
-      px: 24,
+      px: "screenFrameX",
       // bg: ["primary", "secondary", "debug"],
     },
   },
