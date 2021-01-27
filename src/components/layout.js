@@ -15,7 +15,8 @@ import { ThemeProvider, Container } from "theme-ui"
 import theme from "../gatsby-plugin-theme-ui"
 import Header from "./header"
 import Footer from "./Footer"
-import "./layout.css"
+// import "./layout.css"
+import "./reset.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
