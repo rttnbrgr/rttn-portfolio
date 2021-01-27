@@ -17,6 +17,7 @@ const IndexPage = ({ data }) => {
             title={node.frontmatter.title}
             key={node.id}
             to={node.fields.slug}
+            thumb={node.frontmatter.thumb}
           />
         ))}
       </Grid>
@@ -58,6 +59,15 @@ export const query = graphql`
             path
             title
             year
+            thumb {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+                gatsbyImageData
+              }
+              name
+            }
           }
           fields {
             slug

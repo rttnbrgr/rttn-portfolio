@@ -3,22 +3,27 @@ import { jsx, Styled, Flex } from "theme-ui"
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import Img from "gatsby-image"
 
 export default function PortfolioItem({ data }) {
   const post = data.markdownRemark
+  const { client, year, title, thumb } = post.frontmatter
+  console.log("post", post)
   return (
     <Layout>
-      <img
-        src="https://picsum.photos/800/600"
-        sx={{ mb: 12 }}
-        alt="Meaniful Text"
-      />
-      <Flex>
-        <img
-          src="https://picsum.photos/80/60"
-          sx={{ mb: 12 }}
+      {thumb ? (
+        <Img
+          fluid={thumb.childImageSharp.fluid}
+          sx={{ mb: 16 }}
           alt="Meaniful Text"
         />
+      ) : (
+        <img
+          src="https://picsum.photos/800/600"
+          sx={{ mb: 16 }}
+          alt="Meaniful Text"
+        />
+      )}
       <Flex sx={{ overflow: "scroll", mb: 24 }}>
         {[0, 1, 2, 3, 4].map(x => (
           <img
@@ -63,7 +68,19 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
+        client
+        path
         title
+        year
+        thumb {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+            gatsbyImageData
+          }
+          name
+        }
       }
     }
   }
