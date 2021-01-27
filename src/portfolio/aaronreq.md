@@ -2,7 +2,7 @@
 title: "Aaronreq"
 client: "ACQ"
 year: "2014"
-thumb: ../images/Thumbnail-Magenta.jpg
+thumb: ../images/thumbnail-magenta.jpg
 ---
 
 Write a description
