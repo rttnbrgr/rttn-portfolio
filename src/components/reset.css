@@ -29,3 +29,12 @@ img {
   border-style: none;
   max-width: 100%;
 }
+hr {
+  border: none;
+}
+
+:focus {
+  /* width appears to not take any effect */
+  outline: 4px black auto;
+  outline-offset: 8px;
+}
