@@ -1,7 +1,8 @@
 ---
 title: "Fullscreen Video"
 client: "Personal"
-year: "2014"
+datePrint: "2014"
+dateSort: 2015-08-19
 thumb: ../images/thumbnail-purple.jpg
 ---
 

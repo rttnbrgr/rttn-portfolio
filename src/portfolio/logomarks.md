@@ -1,7 +1,8 @@
 ---
 title: "Logomarks"
 client: "Various"
-year: "2010-2014"
+datePrint: "2010-2014"
+dateSort: 2015-08-30
 thumb: ../images/thumbnail-yellow.jpg
 ---
 

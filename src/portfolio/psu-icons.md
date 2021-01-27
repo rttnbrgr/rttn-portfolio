@@ -1,7 +1,8 @@
 ---
 title: "PSU Icons"
 client: "Portland State University"
-year: "2015"
+datePrint: "2015"
+dateSort: 2015-08-29
 thumb: ../images/thumbnail-orange.jpg
 ---
 

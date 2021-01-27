@@ -2,7 +2,8 @@
 path: "/display"
 title: "Display"
 client: "Sprinklr"
-year: "2016-2018"
+datePrint: "2016-2018"
+dateSort: 2020-06-02
 thumb: ../images/thumbnail-pink.jpg
 ---
 

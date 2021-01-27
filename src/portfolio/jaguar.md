@@ -1,7 +1,8 @@
 ---
 title: "Jaguar"
 client: "ACQ"
-year: "2016"
+datePrint: "2016"
+dateSort: 2015-08-31
 thumb: ../images/thumbnail-red.jpg
 ---
 

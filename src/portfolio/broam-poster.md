@@ -1,7 +1,8 @@
 ---
 title: "Broam Poster"
 client: "Redtruck"
-year: "2015"
+datePrint: "2015"
+dateSort: 2015-08-22
 thumb: ../images/thumbnail-blue.jpg
 ---
 

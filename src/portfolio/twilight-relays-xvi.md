@@ -1,7 +1,8 @@
 ---
 title: "Twilight Relays XVI"
 client: "Jesuit x Nike"
-year: "2016"
+datePrinit: "2016"
+dateSort: 2015-08-23
 thumb: ../images/thumbnail-yellow.jpg
 ---
 

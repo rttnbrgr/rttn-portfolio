@@ -1,7 +1,8 @@
 ---
 title: "ACQ Tunes"
 client: "ACQ"
-year: "2015"
+datePrint: "2015"
+dateSort: 2015-08-28
 thumb: ../images/thumbnail-green.jpg
 ---
 

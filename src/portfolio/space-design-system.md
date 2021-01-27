@@ -2,7 +2,8 @@
 path: "/space-design"
 title: "Space Design System"
 client: "Sprinklr"
-year: "2018-2020"
+datePrint: "2018-2020"
+dateSort: 2020-06-01
 thumb: ../images/thumbnail-purple.jpg
 ---
 

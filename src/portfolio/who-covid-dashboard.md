@@ -1,7 +1,8 @@
 ---
 title: "WHO Covid Dashboard"
 client: "Sprinklr"
-year: "2020"
+datePrint: "2020"
+dateSort: 2020-05-30
 thumb: ../images/thumbnail-green.jpg
 ---
 
