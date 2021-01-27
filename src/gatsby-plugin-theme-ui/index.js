@@ -44,6 +44,7 @@ export default {
       color: "text",
       fontFamily: "heading",
       fontWeight: "heading",
+      lineHeight: 1,
       m: 0,
     },
     body: {
@@ -51,15 +52,35 @@ export default {
       fontFamily: "body",
       m: 0,
     },
-    // start as h1 | linehgith + underline
-    bigLinks: {
+    styleHeader1: {
       variant: "text.heading",
-      lineHeight: 1.5,
       fontSize: [32, 48],
-      color: "red",
+    },
+  },
+  buttons: {
+    bigText: {
+      variant: "text.styleHeader1",
+      // override theme-ui btn defaults
+      bg: "transparent",
+      p: 0,
+      borderRadius: 0,
       "&:hover": {
-        textDecoration: "1px solid green",
-        color: "pink",
+        cursor: "pointer",
+      },
+    },
+    primary: {
+      variant: "buttons.bigText",
+    },
+  },
+  links: {
+    // start as h1 | lineheight + underline
+    menuLink: {
+      variant: "text.styleHeader1",
+      display: "block",
+      lineHeight: 1.5,
+      "&:hover": {
+        textDecoration: "underline",
+        cursor: "pointer",
       },
     },
   },
@@ -76,9 +97,7 @@ export default {
       fontWeight: "body",
     },
     h1: {
-      variant: "text.heading",
-      // fontSize: 6,
-      fontSize: [32, 48],
+      variant: "text.styleHeader1",
     },
     h2: {
       variant: "text.heading",
@@ -92,6 +111,14 @@ export default {
       variant: "text.body",
       fontSize: 16,
       m: 0,
+    },
+    hr: {
+      display: "inline-flex",
+      backgroundColor: "text",
+      height: "5px",
+      mb: 8,
+      mt: 8,
+      width: 32,
     },
   },
 }
