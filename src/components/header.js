@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { useState } from "react"
-import { jsx, Styled, Flex, Container, Box, Text } from "theme-ui"
-import { Link } from "gatsby"
+import { jsx, Styled, Flex, Container, Box, Text, Link, Button } from "theme-ui"
+import { Link as GatsbyLink } from "gatsby"
 import PropTypes from "prop-types"
 
 const primaryNavigation = [
@@ -32,13 +32,12 @@ const Menu = ({ handleToggle, isMenuOpen }) => (
       top: 0,
       left: 0,
       pointerEvents: "none",
+      zIndex: 1,
     }}
   >
     <Container sx={{ position: "relative" }}>
       <Flex
-        // width=['100vw']
         bg="background"
-        // bg="rgba(255,255,255, 0.5)"
         pr="screenFrameX"
         pl="5rem"
         py="screenFrameY"
@@ -49,7 +48,6 @@ const Menu = ({ handleToggle, isMenuOpen }) => (
           height: ["100vh"],
           position: "absolute",
           pointerEvents: "all",
-          // top: 0,
           top: 0,
           right: 0,
           color: "text",
@@ -58,33 +56,25 @@ const Menu = ({ handleToggle, isMenuOpen }) => (
           transform: isMenuOpen ? `translateX(0%)` : `translateX(100%)`,
         }}
       >
-        <Styled.h1 onClick={handleToggle}>Close</Styled.h1>
+        <Button onClick={handleToggle}>Close</Button>
+
         <div>
           {primaryNavigation.map((x, i) => (
-            <Styled.h1 sx={{ lineHeight: 1.5 }} key={i}>
+            <Link variant="menuLink" key={i}>
               {x.title}
-            </Styled.h1>
+            </Link>
           ))}
-          {/* 
-      <hr
-        sx={{
-          backgroundColor: "text",
-          height: "4px",
-          marginBottom: "8px",
-          marginTop: "8px",
-          // margin: 0,
-          width: "2rem",
-          display: "inline-flex",
-        }}
-      />
-       */}
+
+          <Styled.hr />
+
           {socialNavigation.map((x, i) => (
-            <Text variant="bigLinks" key={i}>
+            <Link variant="menuLink" key={i}>
               {x.title}
-            </Text>
+            </Link>
           ))}
         </div>
       </Flex>
+      {/* Overflow mat */}
       <Box
         // bg="debug"
         bg="background"
@@ -119,14 +109,14 @@ const Header = ({ siteTitle }) => {
         <Flex sx={{ justifyContent: "space-between" }}>
           {/* Left */}
           <Styled.h1>
-            <Link
+            <GatsbyLink
               to="/"
               style={{
                 textDecoration: `none`,
               }}
             >
               {siteTitle}
-            </Link>
+            </GatsbyLink>
           </Styled.h1>
 
           {/* Right */}
