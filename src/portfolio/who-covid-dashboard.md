@@ -1,7 +1,13 @@
 ---
 title: "WHO Covid Dashboard"
 client: "Sprinklr"
-year: "2020"
+datePrint: "2020"
+dateSort: 2020-05-30
+thumb: ../images/thumbnail-green.jpg
 ---
 
-Poke tumeric keffiyeh tofu, fashion axe organic normcore selvage meggings mumblecore tbh street art jianbing. Truffaut literally chillwave XOXO, mustache retro pug typewriter microdosing lo-fi hashtag whatever thundercats plaid. Yr squid salvia, letterpress pabst scenester schlitz portland wolf bespoke. Art party organic jianbing vape literally, whatever cronut yuccie glossier hexagon chartreuse hoodie brunch health goth. Semiotics deep v vexillologist ugh bespoke meh, heirloom crucifix chambray umami. Iceland banh mi unicorn cornhole authentic ethical.
+As a member of the Sprinklr's product design team, I helped shape the user experience for the WHO's covid tracking Dashboard. It includes a responsive global map, trends by region and country, and an interactive chart allowing users to build their own data visualization.
+
+I was responsible for implementing designs in our custom React application using modern CSS-in-JS patterns while keeping everything organized and configurable.
+
+Check out the live site [here.](https://covid19.who.int/)

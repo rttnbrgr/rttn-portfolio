@@ -2,7 +2,6 @@ import React from "react"
 import { Grid, Box } from "theme-ui"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import portfoliData from "../data/portfolio"
 import Item from "../components/Item"
 import { Link } from "gatsby"
 
@@ -17,6 +16,7 @@ const IndexPage = ({ data }) => {
             title={node.frontmatter.title}
             key={node.id}
             to={node.fields.slug}
+            thumb={node.frontmatter.thumb}
           />
         ))}
       </Grid>
@@ -48,16 +48,21 @@ export default IndexPage
 
 export const query = graphql`
   query MyQuery {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___dateSort }) {
       edges {
         node {
           id
-          rawMarkdownBody
           frontmatter {
-            client
-            path
             title
-            year
+            datePrint
+            thumb {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+              name
+            }
           }
           fields {
             slug

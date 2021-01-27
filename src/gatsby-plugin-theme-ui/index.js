@@ -50,7 +50,6 @@ export default {
       color: "text",
       fontFamily: "body",
       m: 0,
-      bg: "debug",
     },
     // start as h1 | linehgith + underline
     bigLinks: {
@@ -84,6 +83,10 @@ export default {
     h2: {
       variant: "text.heading",
       fontSize: 24,
+    },
+    h3: {
+      variant: "text.heading",
+      fontSize: 16,
     },
     p: {
       variant: "text.body",

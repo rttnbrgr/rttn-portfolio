@@ -9,13 +9,14 @@ const Footer = () => {
         mt: "24px",
         mb: "48px",
         justifyContent: "space-between",
-        alignItems: "flex-end",
+        alignItems: "flex-start",
+        flexDirection: "column",
         a: {
           color: "inherit",
         },
       }}
     >
-      <Styled.h2>RTTNBRGR</Styled.h2>
+      <Styled.h2 sx={{ mb: 8 }}>RTTNBRGR</Styled.h2>
       <Styled.p sx={{ fontWeight: "bold" }}>
         ©{new Date().getFullYear()} {` · `} Built with
         {` `}

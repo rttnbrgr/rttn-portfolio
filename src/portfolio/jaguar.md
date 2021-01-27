@@ -1,7 +1,9 @@
 ---
 title: "Jaguar"
 client: "ACQ"
-year: "2016"
+datePrint: "2016"
+dateSort: 2015-08-31
+thumb: ../images/thumbnail-red.jpg
 ---
 
-Mlkshk asymmetrical hoodie cliche irony. Before they sold out chillwave fixie, freegan cronut cardigan helvetica blog literally small batch. Cray hammock wolf selfies green juice sriracha shoreditch, woke chillwave glossier bitters hot chicken meggings pug succulents. Normcore poutine freegan bicycle rights vexillologist actually. Coloring book lo-fi vaporware polaroid DIY farm-to-table, four dollar toast portland.
+Write a description
