@@ -101,7 +101,7 @@ const Menu = ({ handleToggle, isMenuOpen }) => (
 )
 
 const Header = ({ siteTitle }) => {
-  const [isMenuOpen, setMenuOpen] = useState(true)
+  const [isMenuOpen, setMenuOpen] = useState(false)
   function toggleMenu() {
     console.log("toggle")
     setMenuOpen(!isMenuOpen)
