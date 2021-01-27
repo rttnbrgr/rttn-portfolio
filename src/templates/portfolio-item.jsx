@@ -7,7 +7,7 @@ import Img from "gatsby-image"
 
 export default function PortfolioItem({ data }) {
   const post = data.markdownRemark
-  const { client, year, title, thumb } = post.frontmatter
+  const { client, datePrint, title, thumb } = post.frontmatter
   console.log("post", post)
   return (
     <Layout>
@@ -54,7 +54,7 @@ export default function PortfolioItem({ data }) {
         </div>
         <div sx={{ flex: "0 0 50%" }}>
           <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Date</Styled.h3>
-          <Styled.p sx={{ lineHeight: 1 }}>{year}</Styled.p>
+          <Styled.p sx={{ lineHeight: 1 }}>{datePrint}</Styled.p>
         </div>
       </Flex>
 
@@ -71,7 +71,7 @@ export const query = graphql`
         client
         path
         title
-        year
+        datePrint
         thumb {
           childImageSharp {
             fluid {
