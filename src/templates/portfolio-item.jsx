@@ -19,28 +19,41 @@ export default function PortfolioItem({ data }) {
           sx={{ mb: 12 }}
           alt="Meaniful Text"
         />
-        <img
-          src="https://picsum.photos/80/60"
-          sx={{ mb: 12, ml: 12 }}
-          alt="Meaniful Text"
-        />
-        <img
-          src="https://picsum.photos/80/60"
-          sx={{ mb: 12, ml: 12 }}
-          alt="Meaniful Text"
-        />
-        <img
-          src="https://picsum.photos/80/60"
-          sx={{ mb: 12, ml: 12 }}
-          alt="Meaniful Text"
-        />
-        <img
-          src="https://picsum.photos/80/60"
-          sx={{ mb: 12, ml: 12 }}
-          alt="Meaniful Text"
-        />
+      <Flex sx={{ overflow: "scroll", mb: 24 }}>
+        {[0, 1, 2, 3, 4].map(x => (
+          <img
+            src="https://picsum.photos/80/60"
+            alt="Meaniful Text"
+            key={x}
+            sx={{
+              ml: x === 0 ? 0 : 8,
+            }}
+          />
+        ))}
       </Flex>
-      <Styled.h2>{post.frontmatter.title}</Styled.h2>
+      <Styled.h2 sx={{ lineHeight: 1 }}>{title}</Styled.h2>
+      {/* HR */}
+      <div
+        sx={{
+          height: "3px",
+          width: "24px",
+          bg: "text",
+          mb: 24,
+          mt: 16,
+        }}
+      />
+      <Flex sx={{ mb: 16 }}>
+        <div sx={{ flex: "0 0 50%" }}>
+          <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Client</Styled.h3>
+          <Styled.p sx={{ lineHeight: 1 }}>{client}</Styled.p>
+        </div>
+        <div sx={{ flex: "0 0 50%" }}>
+          <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Date</Styled.h3>
+          <Styled.p sx={{ lineHeight: 1 }}>{year}</Styled.p>
+        </div>
+      </Flex>
+
+      <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Description</Styled.h3>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
