@@ -2,7 +2,7 @@
 title: "WHO Covid Dashboard"
 client: "Sprinklr"
 datePrint: "2020"
-dateSort: 2020-05-30
+dateSort: "2020-05-30"
 thumb: ../images/thumbnail-green.jpg
 ---
 
