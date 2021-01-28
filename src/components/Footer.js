@@ -6,11 +6,11 @@ const Footer = () => {
     <Flex
       as="footer"
       sx={{
-        mt: "24px",
-        mb: "48px",
+        my: [48, 64, 96],
+        // bg: ["red", "purple", "green", "pink"],
         justifyContent: "space-between",
         alignItems: "flex-start",
-        flexDirection: "column",
+        flexDirection: ["column", "row"],
         a: {
           color: "inherit",
         },
