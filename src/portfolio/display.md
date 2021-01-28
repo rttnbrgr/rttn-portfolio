@@ -2,7 +2,9 @@
 path: "/display"
 title: "Display"
 client: "Sprinklr"
-year: "2016-2018"
+datePrint: "2016-2018"
+dateSort: 2020-06-02
+thumb: ../images/thumbnail-pink.jpg
 ---
 
 I helped rebuild the entire Sprinklr Display platform from the ground up. The platform is used for both command centers (internal facing) and social displays (think IG posts on the jumbotron at your favorite sporting event).
