@@ -20,26 +20,6 @@ const IndexPage = ({ data }) => {
           />
         ))}
       </Grid>
-      <Box py="4" my="4" sx={{ bg: "#eee" }}>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link
-              to={node.fields.slug}
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
-              <h3 style={{ marginBottom: "8px" }}>
-                {node.frontmatter.title}{" "}
-                <span style={{ color: "#bbb" }}>— {node.frontmatter.date}</span>
-              </h3>
-              <p>{node.excerpt}</p>
-            </Link>
-          </div>
-        ))}
-      </Box>
     </Layout>
   )
 }
