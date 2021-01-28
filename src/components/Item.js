@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 
 const Item = ({ title, to, onClick, thumb }) => {
   return (
-    <Link to={to}>
+    <Link to={to} sx={{ textDecoration: "none" }}>
       {thumb ? (
         <Img
           fluid={thumb.childImageSharp.fluid}
