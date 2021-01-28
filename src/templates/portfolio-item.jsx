@@ -5,13 +5,14 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Img from "gatsby-image"
 import { Link as GatsbyLink } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 export default function PortfolioItem({ data }) {
-  const post = data.markdownRemark
-  const { slug } = data.markdownRemark.fields
+  const post = data.mdx
+  const { slug } = data.mdx.fields
   const { client, datePrint, title, thumb } = post.frontmatter
   console.log("data", data)
-  const thisProjectNode = data.allMarkdownRemark.edges.find(
+  const thisProjectNode = data.allMdx.edges.find(
     edge => edge.node.fields.slug === slug
   )
   console.log("thisProjectNode", thisProjectNode)
@@ -73,7 +74,8 @@ export default function PortfolioItem({ data }) {
       </Flex>
 
       <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Description</Styled.h3>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      {/* <div dangerouslySetInnerHTML={{ __html: post.html }} /> */}
+      <MDXRenderer>{post.body}</MDXRenderer>
 
       {/* Previous Next */}
       <Flex sx={{ my: 48 }}>
@@ -99,8 +101,8 @@ export default function PortfolioItem({ data }) {
 }
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       fields {
         slug
       }
@@ -120,7 +122,7 @@ export const query = graphql`
         }
       }
     }
-    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___dateSort }) {
+    allMdx(sort: { order: DESC, fields: frontmatter___dateSort }) {
       edges {
         node {
           fields {

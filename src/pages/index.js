@@ -11,7 +11,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Home" />
       <Grid gap={32} columns={["1fr", "repeat(2, 1fr)", "repeat(3, 1fr)"]}>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+        {data.allMdx.edges.map(({ node }) => (
           <Item
             title={node.frontmatter.title}
             key={node.id}
@@ -28,7 +28,7 @@ export default IndexPage
 
 export const query = graphql`
   query MyQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___dateSort }) {
+    allMdx(sort: { order: DESC, fields: frontmatter___dateSort }) {
       edges {
         node {
           id
