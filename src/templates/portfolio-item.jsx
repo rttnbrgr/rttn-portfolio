@@ -39,7 +39,7 @@ export default function PortfolioItem({ data }) {
           alt="Meaniful Text"
         />
       )}
-      <Flex sx={{ overflow: "scroll", mb: 24 }}>
+      <Flex sx={{ overflowX: "auto", mb: 24 }}>
         {[0, 1, 2, 3, 4].map(x => (
           <img
             src="https://picsum.photos/80/60"
