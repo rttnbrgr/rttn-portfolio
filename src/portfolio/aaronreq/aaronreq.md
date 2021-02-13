@@ -3,7 +3,8 @@ title: "Aaronreq"
 client: "ACQ"
 datePrint: "2012"
 dateSort: 2015-08-21
-thumb: ../images/thumbnail-magenta.jpg
+thumb: ./thumb.jpg
+magicPath: "aaronreq"
 ---
 
 Write a description
