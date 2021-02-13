@@ -20,6 +20,19 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: `slug`,
       value: slug,
     })
+    console.log("frontmatter", node.frontmatter)
+    console.log("magic path?", node.frontmatter.magicPath)
+
+    const magicPath = node.frontmatter.magicPath
+      ? node.frontmatter.magicPath
+      : "images"
+    if (magicPath) {
+      createNodeField({
+        node,
+        name: `magicPath`,
+        value: magicPath,
+      })
+    }
   }
 }
 
@@ -46,6 +59,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // Data passed to context is available
         // in page queries as GraphQL variables.
         slug: node.fields.slug,
+        magicPath: node.fields.magicPath,
       },
     })
   })
