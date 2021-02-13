@@ -7,6 +7,14 @@ import Img from "gatsby-image"
 import { Link as GatsbyLink } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+// capture this
+// getting thumbs via frontmatter (temp)
+// adding magicDir frontmatter to look up directory for images
+// setting thumbs to a fixed size to maintiain size and aspect ratio
+// commit working aaronreq project
+// update other folders
+// add active image func via hook
+
 export default function PortfolioItem({ data }) {
   const post = data.mdx
   const { slug } = data.mdx.fields
@@ -16,6 +24,7 @@ export default function PortfolioItem({ data }) {
     edge => edge.node.fields.slug === slug
   )
   console.log("thisProjectNode", thisProjectNode)
+
   const { previous, next } = thisProjectNode
   const prevLink = previous && previous.fields.slug
   const prevTitle = previous && previous.frontmatter.title
@@ -23,6 +32,7 @@ export default function PortfolioItem({ data }) {
   const nextTitle = next && next.frontmatter.title
 
   console.log("post", post)
+  console.log("projectImages", data.projectImages.nodes)
 
   return (
     <Layout>
@@ -39,8 +49,15 @@ export default function PortfolioItem({ data }) {
           alt="Meaniful Text"
         />
       )}
-      <Flex sx={{ overflowX: "auto", mb: 24 }}>
-        {[0, 1, 2, 3, 4].map(x => (
+      {/* project images */}
+      <Flex
+        sx={{
+          overflowX: "auto",
+          mb: 24,
+          height: "120px",
+        }}
+      >
+        {/* {[0, 1, 2].map(x => (
           <img
             src="https://picsum.photos/80/60"
             alt="Meaniful Text"
@@ -49,8 +66,24 @@ export default function PortfolioItem({ data }) {
               ml: x === 0 ? 0 : 8,
             }}
           />
-        ))}
+        ))} */}
+        {data.projectImages.nodes.map((x, i) => {
+          return (
+            <Img
+              key={i}
+              fluid={x.childImageSharp.fluid}
+              alt={x.name}
+              sx={{
+                height: "100%",
+                flex: "0 0 180px",
+                ml: x === 0 ? 0 : 8,
+              }}
+            />
+          )
+        })}
       </Flex>
+
+      {/* Metadata section */}
       <Styled.h2 sx={{ lineHeight: 1 }}>{title}</Styled.h2>
       {/* HR */}
       <div
@@ -101,6 +134,27 @@ export default function PortfolioItem({ data }) {
 }
 export const query = graphql`
   query($slug: String!) {
+    # get images
+    projectImages: allFile(
+      filter: {
+        extension: { regex: "/(jpg)|(png)|(tif)|(tiff)|(webp)|(jpeg)/" }
+        # this is brittle magic
+        relativeDirectory: { eq: "aaronreq" }
+        # this removes the thumb
+        name: { ne: "thumb" }
+      }
+    ) {
+      nodes {
+        name
+        childImageSharp {
+          fluid(maxWidth: 1600, quality: 90) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+
+    # project info
     mdx(fields: { slug: { eq: $slug } }) {
       body
       fields {
@@ -122,6 +176,7 @@ export const query = graphql`
         }
       }
     }
+    # get whole list to figure out whats next/prev
     allMdx(sort: { order: DESC, fields: frontmatter___dateSort }) {
       edges {
         node {
