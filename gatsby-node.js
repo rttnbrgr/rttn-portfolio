@@ -14,6 +14,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     // const path = node.frontmatter.path
     // console.log(`Page path: "${path}"`)
     const slug = createFilePath({ node, getNode })
+    console.log("/********** start")
     console.log("slug", slug)
     createNodeField({
       node,
@@ -26,6 +27,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const magicPath = node.frontmatter.magicPath
       ? node.frontmatter.magicPath
       : "images"
+    console.log("🧙‍♂️ magicPath?", magicPath)
+
     if (magicPath) {
       createNodeField({
         node,
@@ -45,6 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             fields {
               slug
+              magicPath
             }
           }
         }
@@ -63,5 +67,6 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+  console.log("----- end ----------")
   console.log(JSON.stringify(result, null, 4))
 }

@@ -14,8 +14,13 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 // commit working aaronreq project
 // update other folders
 // add active image func via hook
+// capture; limitation of this flow with video support
 
 export default function PortfolioItem({ data }) {
+  console.log("data", data)
+
+  // return <div>hi</div>
+
   const post = data.mdx
   const { slug } = data.mdx.fields
   const { client, datePrint, title, thumb } = post.frontmatter
@@ -133,13 +138,13 @@ export default function PortfolioItem({ data }) {
   )
 }
 export const query = graphql`
-  query($slug: String!) {
+  query($slug: String!, $magicPath: String!) {
     # get images
     projectImages: allFile(
       filter: {
         extension: { regex: "/(jpg)|(png)|(tif)|(tiff)|(webp)|(jpeg)/" }
         # this is brittle magic
-        relativeDirectory: { eq: "aaronreq" }
+        relativeDirectory: { eq: $magicPath }
         # this removes the thumb
         name: { ne: "thumb" }
       }
