@@ -19,15 +19,16 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 export default function PortfolioItem({ data }) {
   console.log("data", data)
 
+  // Setup shorthands
   const post = data.mdx
   const { slug } = data.mdx.fields
   const { client, datePrint, title, thumb } = post.frontmatter
-  console.log("data", data)
+
+  // Get this project from all projects
   const thisProjectNode = data.allMdx.edges.find(
     edge => edge.node.fields.slug === slug
   )
-  console.log("thisProjectNode", thisProjectNode)
-
+  // Setup Previous/Next stuff
   const { previous, next } = thisProjectNode
   const prevLink = previous && previous.fields.slug
   const prevTitle = previous && previous.frontmatter.title
@@ -37,26 +38,21 @@ export default function PortfolioItem({ data }) {
   console.log("post", post)
   console.log("projectImages", data.projectImages.nodes)
 
-  const getFirstImageId = data.projectImages.nodes[0].id
+  // Setup Image Stuff
   const getFirstImageNode = data.projectImages.nodes[0]
+  const [activeImageNode, setActiveImageNode] = useState(getFirstImageNode)
 
+  // Handle image row click
   const updateActiveImage = imageId => {
-    const activeNode = data.projectImages.nodes.find((image, i) => {
-      console.log("checking image - ", i)
-      return image.id === imageId
-    })
-    console.log("activeImageNode", activeNode)
+    const activeNode = data.projectImages.nodes.find(
+      image => image.id === imageId
+    )
     setActiveImageNode(activeNode)
   }
 
-  console.log("getFirstImageId", getFirstImageId)
-  const [activeImageId, setActiveImageId] = useState(getFirstImageId)
-  const [activeImageNode, setActiveImageNode] = useState(getFirstImageNode)
-
+  // should render image row?
   const hasImages =
     data.projectImages.nodes && data.projectImages.nodes.length > 1
-  console.log("hasImages?", hasImages)
-  console.log("data.projectImages.nodes?", !!data.projectImages.nodes)
 
   return (
     <Layout>
@@ -74,19 +70,8 @@ export default function PortfolioItem({ data }) {
           }}
           alt="Meaniful Text"
         />
-        <div
-          sx={{
-            bg: "rgba(0,0,0,0.5)",
-            padding: "8px",
-            color: "white",
-            position: "absolute",
-            top: "0",
-            right: "0",
-          }}
-        >
-          {activeImageNode.name}
-        </div>
       </div>
+
       {/* Image Row */}
       {hasImages && (
         <Flex
@@ -110,7 +95,6 @@ export default function PortfolioItem({ data }) {
                 }}
                 onClick={e => {
                   console.log("hi. you clicked me")
-                  // setActiveImageId(x.id)
                   updateActiveImage(x.id)
                   console.log("after click", activeImageNode)
                 }}
@@ -128,18 +112,6 @@ export default function PortfolioItem({ data }) {
                     // },
                   }}
                 />
-                <div
-                  sx={{
-                    bg: "rgba(0,0,0,0.5)",
-                    padding: "8px",
-                    color: "white",
-                    position: "absolute",
-                    top: "1rem",
-                    left: "1rem",
-                  }}
-                >
-                  {x.name}
-                </div>
               </div>
             )
           })}
@@ -148,6 +120,7 @@ export default function PortfolioItem({ data }) {
 
       {/* Metadata section */}
       <Styled.h2 sx={{ lineHeight: 1 }}>{title}</Styled.h2>
+
       {/* HR */}
       <div
         sx={{
@@ -158,6 +131,7 @@ export default function PortfolioItem({ data }) {
           mt: 16,
         }}
       />
+
       <Flex sx={{ mb: 16 }}>
         <div sx={{ flex: "0 0 50%" }}>
           <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Client</Styled.h3>
@@ -170,7 +144,8 @@ export default function PortfolioItem({ data }) {
       </Flex>
 
       <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Description</Styled.h3>
-      {/* <div dangerouslySetInnerHTML={{ __html: post.html }} /> */}
+
+      {/* MDX from here */}
       <MDXRenderer>{post.body}</MDXRenderer>
 
       {/* Previous Next */}
