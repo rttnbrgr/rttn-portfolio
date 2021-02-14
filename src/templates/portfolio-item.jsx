@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled, Flex } from "theme-ui"
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Img from "gatsby-image"
@@ -18,8 +18,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 export default function PortfolioItem({ data }) {
   console.log("data", data)
-
-  // return <div>hi</div>
 
   const post = data.mdx
   const { slug } = data.mdx.fields
@@ -39,54 +37,114 @@ export default function PortfolioItem({ data }) {
   console.log("post", post)
   console.log("projectImages", data.projectImages.nodes)
 
+  const getFirstImageId = data.projectImages.nodes[0].id
+  const getFirstImageNode = data.projectImages.nodes[0]
+
+  const updateActiveImage = imageId => {
+    const activeNode = data.projectImages.nodes.find((image, i) => {
+      console.log("checking image - ", i)
+      return image.id === imageId
+    })
+    console.log("activeImageNode", activeNode)
+    setActiveImageNode(activeNode)
+  }
+
+  console.log("getFirstImageId", getFirstImageId)
+  const [activeImageId, setActiveImageId] = useState(getFirstImageId)
+  const [activeImageNode, setActiveImageNode] = useState(getFirstImageNode)
+
+  const hasImages =
+    data.projectImages.nodes && data.projectImages.nodes.length > 1
+  console.log("hasImages?", hasImages)
+  console.log("data.projectImages.nodes?", !!data.projectImages.nodes)
+
   return (
     <Layout>
-      {thumb ? (
+      {/* Main Image */}
+      <div sx={{ position: "relative" }}>
         <Img
-          fluid={thumb.childImageSharp.fluid}
-          sx={{ mb: 16 }}
+          fluid={activeImageNode.childImageSharp.fluid}
+          sx={{
+            mb: 16,
+            maxHeight: "400px",
+            "& img": {
+              objectFit: "contain!important",
+              objectPosition: "left center!important",
+            },
+          }}
           alt="Meaniful Text"
         />
-      ) : (
-        <img
-          src="https://picsum.photos/800/600"
-          sx={{ mb: 16 }}
-          alt="Meaniful Text"
-        />
+        <div
+          sx={{
+            bg: "rgba(0,0,0,0.5)",
+            padding: "8px",
+            color: "white",
+            position: "absolute",
+            top: "0",
+            right: "0",
+          }}
+        >
+          {activeImageNode.name}
+        </div>
+      </div>
+      {/* Image Row */}
+      {hasImages && (
+        <Flex
+          sx={{
+            overflowX: "auto",
+            mb: 24,
+            height: "120px",
+          }}
+        >
+          {data.projectImages.nodes.map((x, i) => {
+            return (
+              <div
+                sx={{
+                  height: "120px",
+                  flex: "0 0 180px",
+                  ml: x === 0 ? 0 : 8,
+                  "&:hover": {
+                    cursor: "pointer",
+                  },
+                  position: "relative",
+                }}
+                onClick={e => {
+                  console.log("hi. you clicked me")
+                  // setActiveImageId(x.id)
+                  updateActiveImage(x.id)
+                  console.log("after click", activeImageNode)
+                }}
+              >
+                <Img
+                  key={i}
+                  fluid={x.childImageSharp.fluid}
+                  alt={x.name}
+                  sx={{
+                    height: "120px",
+                    // flex: "0 0 180px",
+                    // ml: x === 0 ? 0 : 8,
+                    // "&:hover": {
+                    //   cursor: "pointer",
+                    // },
+                  }}
+                />
+                <div
+                  sx={{
+                    bg: "rgba(0,0,0,0.5)",
+                    padding: "8px",
+                    color: "white",
+                    position: "absolute",
+                    top: "1rem",
+                    left: "1rem",
+                  }}
+                >
+                  {x.name}
+                </div>
+              </div>
+            )
+          })}
+        </Flex>
       )}
-      {/* project images */}
-      <Flex
-        sx={{
-          overflowX: "auto",
-          mb: 24,
-          height: "120px",
-        }}
-      >
-        {/* {[0, 1, 2].map(x => (
-          <img
-            src="https://picsum.photos/80/60"
-            alt="Meaniful Text"
-            key={x}
-            sx={{
-              ml: x === 0 ? 0 : 8,
-            }}
-          />
-        ))} */}
-        {data.projectImages.nodes.map((x, i) => {
-          return (
-            <Img
-              key={i}
-              fluid={x.childImageSharp.fluid}
-              alt={x.name}
-              sx={{
-                height: "100%",
-                flex: "0 0 180px",
-                ml: x === 0 ? 0 : 8,
-              }}
-            />
-          )
-        })}
-      </Flex>
 
       {/* Metadata section */}
       <Styled.h2 sx={{ lineHeight: 1 }}>{title}</Styled.h2>
@@ -148,9 +206,11 @@ export const query = graphql`
         # this removes the thumb
         name: { ne: "thumb" }
       }
+      sort: { fields: name }
     ) {
       nodes {
         name
+        id
         childImageSharp {
           fluid(maxWidth: 1600, quality: 90) {
             ...GatsbyImageSharpFluid_withWebp
