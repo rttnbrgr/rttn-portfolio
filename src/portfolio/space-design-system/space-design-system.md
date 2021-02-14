@@ -4,7 +4,8 @@ title: "Space Design System"
 client: "Sprinklr"
 datePrint: "2018-2020"
 dateSort: 2020-06-01
-thumb: ../images/thumbnail-purple.jpg
+thumb: ./thumb.jpg
+magicPath: "space-design-system"
 ---
 
 My primary work as the design systems engineer was to help our team work more efficiently, remove friction, and communicate more effectively with other stakeholders.

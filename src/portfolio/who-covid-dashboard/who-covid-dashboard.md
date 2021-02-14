@@ -3,7 +3,8 @@ title: "WHO Covid Dashboard"
 client: "Sprinklr"
 datePrint: "2020"
 dateSort: 2020-05-30
-thumb: ../images/thumbnail-green.jpg
+thumb: ./thumb.jpg
+magicPath: "who-covid-dashboard"
 ---
 
 As a member of the Sprinklr's product design team, I helped shape the user experience for the WHO's covid tracking Dashboard. It includes a responsive global map, trends by region and country, and an interactive chart allowing users to build their own data visualization.

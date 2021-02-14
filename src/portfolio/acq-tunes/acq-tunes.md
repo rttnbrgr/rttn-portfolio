@@ -3,7 +3,8 @@ title: "ACQ Tunes"
 client: "ACQ"
 datePrint: "2015"
 dateSort: 2015-08-28
-thumb: ../images/thumbnail-green.jpg
+thumb: ./thumb.jpg
+magicPath: "acq-tunes"
 ---
 
 Write a description
