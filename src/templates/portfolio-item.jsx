@@ -54,22 +54,32 @@ export default function PortfolioItem({ data }) {
   const hasImages =
     data.projectImages.nodes && data.projectImages.nodes.length > 1
 
+  const hasImage = !!data.projectImages.nodes
+
   return (
     <Layout>
       {/* Main Image */}
       <div sx={{ position: "relative" }}>
-        <Img
-          fluid={activeImageNode.childImageSharp.fluid}
-          sx={{
-            mb: 16,
-            maxHeight: "400px",
-            "& img": {
-              objectFit: "contain!important",
-              objectPosition: "left center!important",
-            },
-          }}
-          alt="Meaniful Text"
-        />
+        {hasImage ? (
+          <Img
+            fluid={activeImageNode.childImageSharp.fluid}
+            sx={{
+              mb: 16,
+              maxHeight: "400px",
+              "& img": {
+                objectFit: "contain!important",
+                objectPosition: "left center!important",
+              },
+            }}
+            alt="Meaniful Text"
+          />
+        ) : (
+          <img
+            src="https://picsum.photos/800/600"
+            sx={{ mb: 16 }}
+            alt="Meaniful Text"
+          />
+        )}
       </div>
 
       {/* Image Row */}
