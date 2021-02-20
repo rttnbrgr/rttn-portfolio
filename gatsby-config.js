@@ -27,23 +27,23 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         // this is in the tutorial for adding mdx;
         // wasn't previously using nay of these with remakr
-        //  gatsbyRemarkPlugins: [
-        //    {
-        //      resolve: `gatsby-remark-images`,
-        //      options: {
-        //        maxWidth: 590,
-        //      },
-        //    },
-        //    {
-        //      resolve: `gatsby-remark-responsive-iframe`,
-        //      options: {
-        //        wrapperStyle: `margin-bottom: 1.0725rem`,
-        //      },
-        //    },
-        //    `gatsby-remark-prismjs`,
-        //    `gatsby-remark-copy-linked-files`,
-        //    `gatsby-remark-smartypants`,
-        //  ],
+        gatsbyRemarkPlugins: [
+          //    {
+          //      resolve: `gatsby-remark-images`,
+          //      options: {
+          //        maxWidth: 590,
+          //      },
+          //    },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          //    `gatsby-remark-prismjs`,
+          //    `gatsby-remark-copy-linked-files`,
+          //    `gatsby-remark-smartypants`,
+        ],
       },
     },
     `gatsby-plugin-sharp`,

@@ -1,8 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from "react"
-import { jsx, Styled, Flex, Container, Box, Text, Link, Button } from "theme-ui"
-import { Link as GatsbyLink } from "gatsby"
-import PropTypes from "prop-types"
+import { jsx, Styled, Flex, Container, Box, Link, Button } from "theme-ui"
 
 const primaryNavigation = [
   { title: "Home", href: "#" },

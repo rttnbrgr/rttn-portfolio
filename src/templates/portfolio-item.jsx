@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled, Flex } from "theme-ui"
-import React, { useState } from "react"
+import { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Img from "gatsby-image"
@@ -22,7 +22,7 @@ export default function PortfolioItem({ data }) {
   // Setup shorthands
   const post = data.mdx
   const { slug } = data.mdx.fields
-  const { client, datePrint, title, thumb } = post.frontmatter
+  const { client, datePrint, title } = post.frontmatter
 
   // Get this project from all projects
   const thisProjectNode = data.allMdx.edges.find(
@@ -54,13 +54,13 @@ export default function PortfolioItem({ data }) {
   const hasImages =
     data.projectImages.nodes && data.projectImages.nodes.length > 1
 
-  const hasImage = !!data.projectImages.nodes
+  const hasNoImage = data.projectImages.nodes.length === 0
 
   return (
     <Layout>
       {/* Main Image */}
       <div sx={{ position: "relative" }}>
-        {hasImage ? (
+        {!hasNoImage ? (
           <Img
             fluid={activeImageNode.childImageSharp.fluid}
             sx={{
@@ -108,6 +108,9 @@ export default function PortfolioItem({ data }) {
                   updateActiveImage(x.id)
                   console.log("after click", activeImageNode)
                 }}
+                key={i}
+                role="button"
+                tabIndex="0"
               >
                 <Img
                   key={i}
@@ -153,10 +156,16 @@ export default function PortfolioItem({ data }) {
         </div>
       </Flex>
 
-      <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Description</Styled.h3>
+      <div
+        sx={{
+          maxWidth: "600px",
+        }}
+      >
+        <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Description</Styled.h3>
 
-      {/* MDX from here */}
-      <MDXRenderer>{post.body}</MDXRenderer>
+        {/* MDX from here */}
+        <MDXRenderer>{post.body}</MDXRenderer>
+      </div>
 
       {/* Previous Next */}
       <Flex sx={{ my: 48 }}>
@@ -226,6 +235,7 @@ export const query = graphql`
         }
       }
     }
+
     # get whole list to figure out whats next/prev
     allMdx(sort: { order: DESC, fields: frontmatter___dateSort }) {
       edges {

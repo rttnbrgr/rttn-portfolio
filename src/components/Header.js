@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import React, { useState } from "react"
-import { jsx, Styled, Flex, Container, Box, Text, Link, Button } from "theme-ui"
+import { useState } from "react"
+import { jsx, Styled, Flex, Container, Button } from "theme-ui"
 import { Link as GatsbyLink } from "gatsby"
 import PropTypes from "prop-types"
 import Menu from "./Menu"

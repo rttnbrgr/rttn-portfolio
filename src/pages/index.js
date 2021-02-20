@@ -1,9 +1,8 @@
 import React from "react"
-import { Grid, Box } from "theme-ui"
+import { Grid } from "theme-ui"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Item from "../components/Item"
-import { Link } from "gatsby"
 
 const IndexPage = ({ data }) => {
   console.log(data)
