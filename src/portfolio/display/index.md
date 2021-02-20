@@ -13,3 +13,9 @@ I helped rebuild the entire Sprinklr Display platform from the ground up. The pl
 I helped architect the entire frontend in modern React, Typescript, and Mobx. I also built a number of our data visualization modules which were powered by D3.
 
 I design and implemented a variety of visualizations based around social post data. Our visualizations helped showcase the content and surface insightful engagement metrics and trends.
+
+### Launch Demos
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IPUdzpVOHxc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8CYS-viMCzs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
