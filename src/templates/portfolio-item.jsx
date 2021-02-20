@@ -54,13 +54,13 @@ export default function PortfolioItem({ data }) {
   const hasImages =
     data.projectImages.nodes && data.projectImages.nodes.length > 1
 
-  const hasImage = !!data.projectImages.nodes
+  const hasNoImage = data.projectImages.nodes.length === 0
 
   return (
     <Layout>
       {/* Main Image */}
       <div sx={{ position: "relative" }}>
-        {hasImage ? (
+        {!hasNoImage ? (
           <Img
             fluid={activeImageNode.childImageSharp.fluid}
             sx={{
