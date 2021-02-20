@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled, Flex } from "theme-ui"
-import React, { useState } from "react"
+import { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Img from "gatsby-image"
@@ -22,7 +22,7 @@ export default function PortfolioItem({ data }) {
   // Setup shorthands
   const post = data.mdx
   const { slug } = data.mdx.fields
-  const { client, datePrint, title, thumb } = post.frontmatter
+  const { client, datePrint, title } = post.frontmatter
 
   // Get this project from all projects
   const thisProjectNode = data.allMdx.edges.find(
@@ -108,6 +108,9 @@ export default function PortfolioItem({ data }) {
                   updateActiveImage(x.id)
                   console.log("after click", activeImageNode)
                 }}
+                key={i}
+                role="button"
+                tabIndex="0"
               >
                 <Img
                   key={i}
