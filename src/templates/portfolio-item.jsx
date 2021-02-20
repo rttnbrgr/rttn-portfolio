@@ -156,10 +156,16 @@ export default function PortfolioItem({ data }) {
         </div>
       </Flex>
 
-      <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Description</Styled.h3>
+      <div
+        sx={{
+          maxWidth: "600px",
+        }}
+      >
+        <Styled.h3 sx={{ lineHeight: 1, mb: 8 }}>Description</Styled.h3>
 
-      {/* MDX from here */}
-      <MDXRenderer>{post.body}</MDXRenderer>
+        {/* MDX from here */}
+        <MDXRenderer>{post.body}</MDXRenderer>
+      </div>
 
       {/* Previous Next */}
       <Flex sx={{ my: 48 }}>
@@ -229,6 +235,7 @@ export const query = graphql`
         }
       }
     }
+
     # get whole list to figure out whats next/prev
     allMdx(sort: { order: DESC, fields: frontmatter___dateSort }) {
       edges {
