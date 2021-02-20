@@ -118,11 +118,6 @@ export default function PortfolioItem({ data }) {
                   alt={x.name}
                   sx={{
                     height: "120px",
-                    // flex: "0 0 180px",
-                    // ml: x === 0 ? 0 : 8,
-                    // "&:hover": {
-                    //   cursor: "pointer",
-                    // },
                   }}
                 />
               </div>
